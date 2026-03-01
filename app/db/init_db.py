@@ -5,4 +5,5 @@ from app.db.base import Base
 from app.models.symbol import Symbol
 
 def init_db():
+    print("Initializing database...")
     Base.metadata.create_all(bind=engine)
