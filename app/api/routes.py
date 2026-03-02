@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from typing import List
 
 from app.db.deps import get_db
 from app.api.schemas import SymbolCreate, SymbolOut
@@ -16,7 +17,7 @@ def create_symbol(payload: SymbolCreate, db: Session = Depends(get_db)):
     sym = add_symbol(db, payload.ticker)
     return sym
 
-@router.get("/symbols", response_model=list[SymbolOut])
+@router.get("/symbols", response_model=List[SymbolOut])
 def read_symbol(db: Session = Depends(get_db)):
     return list_symbols(db)
 
