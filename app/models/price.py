@@ -1,4 +1,5 @@
-from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, func
+from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey
+from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -13,10 +14,10 @@ class Price(Base):
 
     timestamp = Column(
         DateTime(timezone=True),
-        server_default=func.now(),
+        server_default=func.current_timestamp(),
         index=True
     )
     price = Column(Float, nullable=False)
     volume = Column(Float, nullable=True)
     
-    symbol = relationship("Symbol", back_populates="prices")
+    symbol = relationship("Symbol", backref="prices")
