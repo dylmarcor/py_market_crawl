@@ -1,10 +1,11 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import select
+from typing import Optional, List
 
 from app.models.price import Price
 from app.models.symbol import Symbol
 
-def add_price(db: Session, ticker: str, price: float, volume: float | None = None) -> Price:
+def add_price(db: Session, ticker: str, price: float, volume: Optional[float] = None) -> Price:
     ticker = ticker.upper().strip()
         
     sym = db.execute(
@@ -26,7 +27,7 @@ def add_price(db: Session, ticker: str, price: float, volume: float | None = Non
     
     return price_obj
 
-def list_prices_for_symbol(db: Session, ticker: str) -> list[Price]:
+def list_prices_for_symbol(db: Session, ticker: str) -> List[Price]:
     ticker = ticker.upper().strip()
         
     sym = db.execute(
