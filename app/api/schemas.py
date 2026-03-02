@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class SymbolCreate(BaseModel):
     ticker: str
@@ -7,5 +7,4 @@ class SymbolOut(BaseModel):
     id: int
     ticker: str
 
-    class Config:
-        from_attributes: True
+    model_config = ConfigDict(from_attributes=True)
