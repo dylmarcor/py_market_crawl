@@ -1,5 +1,5 @@
-from sqlalchemy import Session
-from sqlalchemy.orm import select
+from sqlalchemy import select 
+from sqlalchemy.orm import Session 
 from app.models.symbol import Symbol
 
 def add_symbol(db: Session, ticker: str) -> Symbol:
