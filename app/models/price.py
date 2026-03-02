@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey
 from sqlalchemy.sql import func
 from sqlalchemy.orm import relationship
-from utils.psql_utc import utcnow
+from app.services.psql_utc import utcnow
 
 from app.db.base import Base
 
