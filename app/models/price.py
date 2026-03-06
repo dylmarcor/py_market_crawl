@@ -1,5 +1,4 @@
-from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey
-from sqlalchemy.sql import func
+from sqlalchemy import Column, Integer, Float, DateTime, ForeignKey, func
 from sqlalchemy.orm import relationship
 from app.services.psql_utc import utcnow
 
@@ -14,7 +13,7 @@ class Price(Base):
 
     timestamp = Column(
         DateTime(timezone=True),
-        server_default=utcnow(),
+        server_default=func.now(),
         index=True
     )
     price = Column(Float, nullable=False)
